@@ -22,7 +22,6 @@ import Link from "../common/Link"
 function ConfigFormItems(props: {configs: FormConfig}) {
   const {configs} = props
   if (!configs) return null
-
   const configVals = useSelector(ConfigPropValues.all)
 
   const formInputs = Object.values(configs).map((c) => {

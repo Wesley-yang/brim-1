@@ -32,8 +32,11 @@ const slice = createSlice({
 export default {
   reducer: slice.reducer,
   ...slice.actions,
-  get: (configName, propName) => ({configPropValues: state}) => {
+  get: (configName: string, propName?: string) => ({
+    configPropValues: state
+  }) => {
     if (!state[configName]) return null
+    if (!propName) return state[configName]
     return state[configName][propName]
   },
   all: (state) => state.configPropValues
