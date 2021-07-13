@@ -46,6 +46,7 @@ function ConfigFormItems(props: {configs: FormConfig}) {
       </InputLabel>
     )
 
+    const val = get(configVals, [c.configName, c.name], undefined)
     switch (c.type) {
       case "file":
         return (
@@ -53,11 +54,7 @@ function ConfigFormItems(props: {configs: FormConfig}) {
             {itemLabel}
             <FileInput
               name={name}
-              defaultValue={
-                get(configVals, [c.configName, c.name], "") ||
-                defaultValue ||
-                ""
-              }
+              defaultValue={val === undefined ? defaultValue : val}
               placeholder="default"
             />
           </div>
@@ -69,8 +66,8 @@ function ConfigFormItems(props: {configs: FormConfig}) {
             <TextInput
               name={name}
               type="text"
-              placeholder="default"
-              defaultValue={defaultValue}
+              placeholder=""
+              defaultValue={val === undefined ? defaultValue : val}
             />
           </div>
         )

@@ -35,7 +35,7 @@ export default {
   get: (configName: string, propName?: string) => ({
     configPropValues: state
   }) => {
-    if (!state[configName]) return null
+    if (!state[configName]) return undefined
     if (!propName) return state[configName]
     return state[configName][propName]
   },
